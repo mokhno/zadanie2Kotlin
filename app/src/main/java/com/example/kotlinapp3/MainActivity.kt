@@ -11,28 +11,19 @@ import kotlinx.android.synthetic.main.activity_main.*
 import java.util.logging.Logger
 
 class MainActivity : AppCompatActivity() {
-    val TAG: String = "tag"
-    private var adressList: MutableList<Adress> = mutableListOf()
 
-//private var recycler: RecyclerView =  recyclerID
-
-    private val adressAdapter:AdressAdapter = AdressAdapter()
+    private val adressAdapter: AdressAdapter = AdressAdapter()
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
         recyclerID.layoutManager = LinearLayoutManager(applicationContext)
-recyclerID.adapter= adressAdapter
+        recyclerID.adapter = adressAdapter
 
-        buttonAdd.setOnClickListener(View.OnClickListener {
-            var adress: Adress = Adress()
-            adress.setCity(editCity.getText().toString())
-            adress.setCountry(editCountry.getText().toString())
-            adressList.add(adress)
-            Log.d(TAG, adressList.toString())
-
+        buttonAdd.setOnClickListener {
+            var adress: Adress = Adress(editCity.text.toString(), editCountry.text.toString())
             adressAdapter.addData(adress)
-        })
+        }
 
     }
 }

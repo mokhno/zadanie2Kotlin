@@ -20,7 +20,7 @@ class AdressAdapter : RecyclerView.Adapter<AdressHolder>() {
 
     override fun getItemCount(): Int {
 
-       return adressList.size
+        return adressList.size
 
     }
 
@@ -31,7 +31,6 @@ class AdressAdapter : RecyclerView.Adapter<AdressHolder>() {
 
     fun addData(adress: Adress) {
         Log.d(TAG, adressList.toString())
-//adressList.clear()
         adressList.add(adress)
         notifyDataSetChanged()
 
@@ -39,13 +38,13 @@ class AdressAdapter : RecyclerView.Adapter<AdressHolder>() {
 
 }
 
-class AdressHolder( view: View) : RecyclerView.ViewHolder(view) {
-private val city:TextView = view.findViewById(R.id.tvCity)
-private val country:TextView = view.findViewById(R.id.tvCountry)
+class AdressHolder(view: View) : RecyclerView.ViewHolder(view) {
+    private val city: TextView = view.findViewById(R.id.tvCity)
+    private val country: TextView = view.findViewById(R.id.tvCountry)
     fun bind(adress: Adress) {
-        city.text = adress.getCity()
+        city.text = adress.city
 
-        country.text=adress.getCountry()
+        country.text = adress.country
 
     }
 
