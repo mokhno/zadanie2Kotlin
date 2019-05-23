@@ -31,7 +31,7 @@ recyclerID.adapter= adressAdapter
             adressList.add(adress)
             Log.d(TAG, adressList.toString())
 
-            adressAdapter.addData(adressList)
+            adressAdapter.addData(adress)
         })
 
     }
