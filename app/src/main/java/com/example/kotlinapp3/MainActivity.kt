@@ -7,7 +7,9 @@ import android.support.v7.widget.LinearLayoutManager
 import android.support.v7.widget.RecyclerView
 import android.util.Log
 import android.view.View
+import android.widget.Toast
 import kotlinx.android.synthetic.main.activity_main.*
+import java.util.*
 import java.util.logging.Logger
 
 class MainActivity : AppCompatActivity() {
@@ -21,8 +23,23 @@ class MainActivity : AppCompatActivity() {
         recyclerID.adapter = adressAdapter
 
         buttonAdd.setOnClickListener {
-            var adress: Adress = Adress(editCity.text.toString(), editCountry.text.toString())
-            adressAdapter.addData(adress)
+            var matchCounter: Int = 0
+            var adress: Adress = Adress(editCity.text.toString(), editCountry.text.toString(), UUID.randomUUID().toString())
+          if ( adressAdapter.adressList.isEmpty()) {
+              adressAdapter.addData(adress)
+
+          }else {
+              for (a in adressAdapter.adressList.indices) {
+                  if ((adress.city == adressAdapter.adressList[a].city) && (adress.country == adressAdapter.adressList[a].country)) {
+                      matchCounter++
+                  }
+              }
+              if (matchCounter > 0 ) {
+                  Toast.makeText(this, "Добавляемы город уже существует", Toast.LENGTH_SHORT).show()
+              }
+              else adressAdapter.addData(adress)
+          }
+
         }
 
     }

@@ -1,5 +1,5 @@
 package com.example.kotlinapp3
 
-data class Adress( val city: String, val country: String)
+data class Adress( var city: String, var country: String, val id: String)
 
 
