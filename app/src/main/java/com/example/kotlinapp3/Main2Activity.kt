@@ -1,5 +1,6 @@
 package com.example.kotlinapp3
 
+import android.app.Activity
 import android.content.Intent
 import android.support.v7.app.AppCompatActivity
 import android.os.Bundle
@@ -22,9 +23,10 @@ class Main2Activity : AppCompatActivity() {
 buttonSave.setOnClickListener {
     adress.city = edit_city.text.toString()
     adress.country = edit_country.text.toString()
-//    val intent = Intent(this, MainActivity::class.java)
-//    intent.putExtra("ITEM", adress)
-//    startActivity(intent)
+    val intent = Intent(this, MainActivity::class.java)
+    intent.putExtra("ITEM2", adress)
+    setResult(Activity.RESULT_OK)
+    finish()
 }
 
     }

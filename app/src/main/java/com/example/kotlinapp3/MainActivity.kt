@@ -15,12 +15,13 @@ import java.util.*
 import java.util.logging.Logger
 
 class MainActivity : AppCompatActivity(), AdressAdapter.OnItemClickListener {
-
-
+//    val ITEM2 = "ITEM2"
+//    val TAG: String = "result"
+    private val request = 0
     override fun onItemClick(adress: Adress) {
         val intent = Intent(this@MainActivity, Main2Activity::class.java)
         intent.putExtra("ITEM", adress)
-        startActivity(intent)
+        startActivityForResult(intent, request)
     }
 
     private val adressAdapter: AdressAdapter = AdressAdapter()
@@ -54,6 +55,12 @@ class MainActivity : AppCompatActivity(), AdressAdapter.OnItemClickListener {
 
         }
 
+
+    }
+
+    override fun onActivityResult(requestCode: Int, resultCode: Int, data: Intent?) {
+        super.onActivityResult(requestCode, resultCode, data)
+        adressAdapter.notifyDataSetChanged()
     }
 
 
